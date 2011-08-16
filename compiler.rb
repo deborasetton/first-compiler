@@ -1,15 +1,23 @@
+require './tables'
+
+#
+# Compiler.
+#
 module Compiler
+
+  @@reserved_words = Compiler::Tables::ReservedWords.new
   
-  ID = /$?[a-zA-Z][a-zA-Z0-9]*/
-  NUMBER = /[0-9]+/
-  PALAVRA_RESERVADA = /BEGIN|END|INT|PUTS/
-  SYMBOLS = /[=\+-\*\/\(\)\$;]/
-  BLANK = /[\n\t ]+/
-  
+  #
+  # Reserved words table
+  # 
+  def self.reserved_words
+    @@reserved_words
+  end
+
   #
   # Returns a colored string to be printed to the shell.
   #
-  def color_out(str, color)
+  def self.color_out(str, color)
     case color
       when :black
         "\033[30m#{str}\033[0m"
@@ -31,12 +39,10 @@ module Compiler
         raise "Unknown color: #{color.to_s}"
       end
   end
-  
-  
 end
 
-require 'lexical'
-require 'symbol'
-require 'tables'
-require 'tests'
-require 'token'
+require './lexical'
+require './symbol'
+require './tests'
+require './token'
+

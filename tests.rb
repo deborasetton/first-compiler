@@ -6,4 +6,4 @@ module Compiler
   end
 end
 
-require 'tests/lex'
+require './tests/lex'

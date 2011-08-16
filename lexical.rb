@@ -2,5 +2,5 @@ module Lexical
   
 end
 
-require 'lexical/reader'
-require 'lexical/automaton'
+require './lexical/reader'
+require './lexical/automaton'

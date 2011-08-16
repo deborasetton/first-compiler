@@ -1,24 +1,30 @@
-require 'lexical'
+require './lexical'
 
 module Compiler
   module Tests
     
-    class Lexical
+    class Lex
       
-      def self.test filename
-        reader = Compiler::Lexical::Reader.new(filename)
+      def self.test filename, verbose
+        reader = Compiler::Lexical::Reader.new(filename, verbose)
         
         puts "Getting tokens for file #{filename}"
-        puts ""
-        puts "VALUE     TYPE      LINE      COL"
+        
+        tokens = []
         
         while (token = reader.next_token)
-          
-          puts "#{token.value}  #{token.type} #{token.line} #{token.column}"
-        
+          tokens << token
         end
         
-        puts "finished!"
+        puts ""
+        puts "VALUE\t\tTYPE\t\tLINE\t\tCOL"
+        puts "--------------------------------------------------------------"
+        tokens.each do |token|
+          puts "#{token.value}\t\t#{token.type}\t\t#{token.line}\t\t#{token.column}"
+        end
+        puts ""
+        
+        puts "Finished!"
         
       end
       

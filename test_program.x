@@ -1,0 +1,5 @@
+BEGIN
+
+	INT a = 2;
+
+END

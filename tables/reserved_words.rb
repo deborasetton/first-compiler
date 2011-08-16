@@ -1,14 +1,18 @@
 module Compiler
   module Tables
    
-    class ReservedWord
+    class ReservedWords
       
       def initialize
-        self.reserved_words = ['BEGIN', 'END', 'INT', 'PUTS']
+        #puts "beggining..."
+        @reserved_words = ['BEGIN', 'END', 'INT', 'PUTS']
       end
       
       def is_reserved? word
-        self.reserved_words.include? word
+        
+        #puts "Checking word #{word}. Is reserved: #{@reserved_words.include? word}"
+        
+        @reserved_words.include? word
       end
       
       
